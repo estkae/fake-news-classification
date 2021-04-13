@@ -1,0 +1,15 @@
+---
+title: "R Notebook"
+author: karlestermann
+date: 25.03.21
+output: html_document
+---
+Während des EDA-Prozesses wurde festgestellt, dass die Überschneidungen zwischen gefälschten und echten Nachrichten sehr gering sind, wenn man nur den Prozentsatz der Großbuchstaben im Titel der Nachricht betrachtet. Ein heuristisches Modell, das auf dieser Trennung basiert, wurde auf die Daten im Notizbuch 03_percent_capitals_in_title.ipynb angewendet. Obwohl diese Heuristik in diesem Datensatz eine Genauigkeit von 98 % liefern konnte, scheint es unwahrscheinlich, dass sie gut verallgemeinert werden kann und leicht zu überlisten ist, wenn sie als eine Art Gatekeeping verwendet wird. Diese Situation kann mit den kontinuierlichen Updates verglichen werden, die für einen Spam-Filter durchgeführt werden müssen.
+
+Als nächstes wurden einige Modelle des maschinellen Lernens angewandt, um nach einer verallgemeinerbaren Lösung zu suchen. Mehrere Iterationen eines Naive Bayes-Klassifizierungsmodells mit Bag of Words (BOW)-Merkmalen wurden im Notebook 04_nb_bow.ipynb durchgeführt, und mehrere Iterationen eines Random Forest-Klassifizierungsmodells mit BOW wurden im Notebook 05_rf_bow.ipynb durchgeführt. Mit den ausgewählten und normalisierten Daten, die meiner Meinung nach am besten funktionierten, habe ich ein zusätzliches Modell unter Verwendung von tf/idf anstelle von Bag of Words im Notebook 06_rf_tfidf.ipynb durchgeführt und festgestellt, dass das Modell unter Verwendung von tf/idf bis zu diesem Zeitpunkt am besten funktionierte.
+
+Im Gegensatz zu den meisten Situationen, in denen die Modelle für maschinelles Lernen nicht die gewünschte Genauigkeit oder Präzision oder Recall usw. haben, war in dieser Situation der Stil von Fake- und True-News im Datensatz selbst mit einem einfachen Bag-of-Words-Modell leicht zu klassifizieren. Anstatt zu versuchen, die Genauigkeit der Modelle zu erhöhen oder verschiedene Modelle auszuprobieren, habe ich versucht, die Modelle zu verallgemeinern und dabei die Genauigkeit, Präzision und den Recall hoch zu halten.
+
+
+Da der ursprüngliche Datensatz nur "wahre" Geschichten aus einer Quelle, nämlich Reuters, enthielt, war ich besorgt, dass, obwohl ich Schritte unternommen habe, um die Modelle nicht an diesen Datensatz zu überanpassen, es trotzdem zu einer Überanpassung kommen könnte. Ich fand zusätzliche Daten und testete das Modell, das ich als bestes ausgewählt hatte, mit diesen. Die Ergebnisse waren kaum besser als der Zufall, was sehr enttäuschend war. Ich habe dann einige dieser neuen Daten in den Trainingsdatensatz integriert und das Modell neu trainiert, wobei ich eine etwas geringere Genauigkeit erzielte, aber mehr Vertrauen in das neue Modell hatte. Dann überprüfte ich das neue Modell mit dem vollständigen ergänzenden Datensatz und war mit den Ergebnissen zufrieden.
+ macos/deepLFree.translatedWithDeepL.text
